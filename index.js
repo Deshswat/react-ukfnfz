@@ -126,7 +126,7 @@ class FormClass extends React.Component {
           <input type="submit" value="Submit" />
         </form>
       );
-    } else {
+    } else if(formToRender = 'EmailSalaryForm'){
       return (
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -148,7 +148,25 @@ class FormClass extends React.Component {
           <input type="submit" value="Submit" />
         </form>
       );
-    }
+    }else{
+    const items = this.state.toDoList.map(function(item){
+      return <li> {item} </li>;
+    });
+    return (
+      <div>
+        <textarea
+          onChange={this.handleInputChange}
+          value={this.state.value}
+          style={textAreaStyles}
+          placeholder="Separate Items With Commas" /><br />
+        <button onClick={this.handleSubmit}>Create List</button>
+        <h1>My "To Do" List:</h1>
+        <ul>
+          {items}
+        </ul>
+      </div>
+    );
+  }
   }
 }
 
